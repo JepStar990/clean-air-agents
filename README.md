@@ -644,4 +644,4 @@ cd infra && docker compose up -d
 *   **Model choices**: Ollama’s library lists **Llama 3/3.1**, **Mistral**, **Qwen**, **Gemma**, **Phi**, etc. Start with `llama3:8b-instruct-q4` for stability on 8 GB RAM. [\[ollama.com\]](https://ollama.com/library)
 
 ***
-
+````
