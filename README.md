@@ -54,7 +54,7 @@ OpenAQ provides the world's largest open, harmonized air-quality dataset with an
 
 Use `scope=global` query param in client or set `GLOBAL_DEFAULT=true` in `.env`. Backend routes accept `country`, `city`, or default to **Johannesburg**.
 
-````
+
 
 ### 2.2 `requirements.txt`
 ```txt
@@ -642,4 +642,3 @@ cd infra && docker compose up -d
 *   **Model choices**: Ollama’s library lists **Llama 3/3.1**, **Mistral**, **Qwen**, **Gemma**, **Phi**, etc. Start with `llama3:8b-instruct-q4` for stability on 8 GB RAM. [\[ollama.com\]](https://ollama.com/library)
 
 ***
-````
