@@ -1,9 +1,11 @@
 services:
   - type: web
     name: clean-air-agents
-    env: python
-    region: frankfurt
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 8000"
-    healthCheckPath: "/health"
+    env: docker
+    plan: free
+    healthCheckPath: /health
+    # Set your OpenAQ key in Render Dashboard -> Environment
+    envVars:
+      - key: OPENAQ_API_KEY
+        sync: false
 

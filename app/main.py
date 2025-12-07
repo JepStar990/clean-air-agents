@@ -10,6 +10,7 @@ OpenAQ v3 docs (API key + endpoints):
 
 from fastapi import FastAPI, Query
 from app.settings import settings
+from fastapi.staticfiles import StaticFiles
 
 # Observability
 from app.observability_init import init_observability
@@ -28,6 +29,10 @@ app = FastAPI(title="CleanAir Agents (Johannesburg-first)")
 
 # Initialize OpenTelemetry traces + Prometheus metrics
 init_observability(app, enable_metrics=settings.PROMETHEUS_ENABLED)
+
+
+# Serve static React build (copied to app/static by Dockerfile)
+app.mount("/", StaticFiles(directory="app/static", html=True), name="static")
 
 # Expose A2A routes
 app.include_router(a2a_router, prefix="/a2a")
