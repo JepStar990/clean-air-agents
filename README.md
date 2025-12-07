@@ -1,4 +1,3 @@
-````md
 # CleanAir Agents (Johannesburg-first, globally-ready)
 
 A multi-agent system that ingests **OpenAQ** data (API + bulk), analyzes local air quality for Johannesburg (and global on toggle), generates policies & education materials, and exposes agent capabilities via **A2A**. Observability uses **OpenTelemetry + Prometheus + Grafana**. LLMs run **locally** via **Ollama**.
