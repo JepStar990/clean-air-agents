@@ -17,7 +17,6 @@ OpenAQ provides the world's largest open, harmonized air-quality dataset with an
 1. Install Ollama:
    ```bash
    curl -fsSL https://ollama.com/install.sh | sh && ollama pull llama3:8b && ollama serve
-````
 
 (7–8B quantized models fit into 8 GB RAM; performance improves with 16 GB.) [\[deepwiki.com\]](https://deepwiki.com/ollama/ollama/1.2-system-requirements), [\[isitdev.com\]](https://isitdev.com/run-llms-locally-ollama-llama-3-2025/)
 
