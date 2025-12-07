@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 # CleanAir Agents (Johannesburg-first, globally-ready)
+=======
+# CleanAir Agents — Johannesburg-first, globally-ready
+>>>>>>> fed6c59 (agent mvp1 working locally)
 
-A multi-agent system that ingests **OpenAQ** data (API + bulk), analyzes local air quality for Johannesburg (and global on toggle), generates policies & education materials, and exposes agent capabilities via **A2A**. Observability uses **OpenTelemetry + Prometheus + Grafana**. LLMs run **locally** via **Ollama**.
+A multi-agent FastAPI application that pulls **OpenAQ** air-quality data (API + bulk), analyzes local PM2.5 trends for Johannesburg (or any city), and drafts short policy advisories using a local LLM via **Ollama**. Observability hooks (OpenTelemetry + Prometheus) are included.
 
 ## Why OpenAQ?
-OpenAQ provides the world's largest open, harmonized air-quality dataset with an API (`api.openaq.org`) and a daily CSV S3 archive—ideal for sustainability analytics & UAT at scale. [14](https://openaq.org/) [15](https://registry.opendata.aws/openaq/)
+OpenAQ aggregates global air-quality measurements and exposes them via an open API and a daily S3 CSV archive—ideal for sustainability analysis and repeatable UAT.  
+- API & registry details: https://registry.opendata.aws/openaq/ (S3 archive, hourly updates) [3](https://huggingface.co/docs/hub/spaces)  
+- Platform overview & mission: https://openaq.org/ [4](https://huggingface.co/docs/hub/advanced-compute-options)
 
+<<<<<<< HEAD
 ## Stack
 - Python 3.11, FastAPI
 - LangGraph (stateful multi-agent orchestration; loops, interrupts, checkpointing) [16](https://www.langchain.com/langgraph) [17](https://bix-tech.com/langgraph-in-practice-orchestrating-multiagent-systems-and-distributed-ai-flows-at-scale/)
@@ -588,31 +595,22 @@ export default function App() {
     Pick **B2s v2 (2 vCPU/8 GiB)**—or **D2\_v5** for steadier CPU. Both meet minimal RAM for 7–8B quantized models under Ollama (≥8 GB). [\[cloudprice.net\]](https://cloudprice.net/vm/Standard_B2s_v2), [\[learn.microsoft.com\]](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/general-purpose/dv5-series), [\[ollama.com\]](https://ollama.com/library/llama2:7b)
 
 2.  **SSH in, install base**
+=======
+## Requirements
+- Python 3.11+
+- **Ollama** running locally (e.g., `ollama serve`) with a quantized 7–8B model like `llama3:8b-instruct-q4`.  
+  7B/8B models typically need ≥ 8 GB RAM; quantization reduces memory footprint for CPU-only VM. [1](https://www.vroble.com/2025/11/taming-agentic-storm-mastering.html) [2](https://signoz.io/blog/opentelemetry-fastapi/)
+>>>>>>> fed6c59 (agent mvp1 working locally)
 
+## Quick start
 ```bash
-sudo apt update && sudo apt install -y git curl python3.11 python3.11-venv docker.io
-sudo usermod -aG docker $USER
-newgrp docker
-```
-
-3.  **Install Ollama & a model**
-
-```bash
-curl -fsSL https://ollama.com/install.sh | sh
-ollama pull llama3:8b-instruct-q4
-ollama serve &
-```
-
-> 7B/8B models typically need ≥8 GB RAM; quantization (Q4) fits and is recommended for CPU-only. [\[ollama.com\]](https://ollama.com/library/llama2:7b), [\[isitdev.com\]](https://isitdev.com/run-llms-locally-ollama-llama-3-2025/)
-
-4.  **Clone project & run**
-
-```bash
-git init clean-air-agents && cd clean-air-agents
-# paste files above into folders, or scp them in
-python3.11 -m venv .venv && source .venv/bin/activate
+# 1) Create venv and install deps
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+
+# 2) Run backend
 uvicorn app.main:app --host 0.0.0.0 --port 8000
+<<<<<<< HEAD
 ```
 
 5.  **Run client**
@@ -642,3 +640,10 @@ cd infra && docker compose up -d
 *   **Model choices**: Ollama’s library lists **Llama 3/3.1**, **Mistral**, **Qwen**, **Gemma**, **Phi**, etc. Start with `llama3:8b-instruct-q4` for stability on 8 GB RAM. [\[ollama.com\]](https://ollama.com/library)
 
 ***
+=======
+
+# 3) Try endpoints
+curl 'http://localhost:8000/health'
+curl 'http://localhost:8000/api/openaq?city=Johannesburg&country=ZA'
+curl 'http://localhost:8000/api/analyze?city=Johannesburg&country=ZA&model=llama3:8b-instruct-q4'
+>>>>>>> fed6c59 (agent mvp1 working locally)

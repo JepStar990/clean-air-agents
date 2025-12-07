@@ -1,1 +1,16 @@
-'"$@"'
+{
+  "name": "Air Quality Analytics Agent",
+  "description": "Analyzes OpenAQ data and drafts concise policy advisories.",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "analyze_city_pm25",
+      "name": "Analyze PM2.5 for a city",
+      "description": "Fetches PM2.5 for a given city/country, summarizes exceedances, returns policy text.",
+      "tags": ["analytics", "airquality", "policy"]
+    }
+  ],
+  "capabilities": { "streaming": true, "pushNotifications": false },
+  "authentication": { "schemes": ["public"] },
+  "url": "/a2a"
+}

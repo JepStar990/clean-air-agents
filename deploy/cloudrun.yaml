@@ -1,1 +1,15 @@
-'"$@"'
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: clean-air-agents
+spec:
+  template:
+    spec:
+      containers:
+        - image: gcr.io/YOUR_PROJECT/clean-air-agents:latest
+          ports: [{containerPort: 8000}]
+          env:
+            - name: PROMETHEUS_ENABLED
+              value: "true"
+      containerConcurrency: 1
+
